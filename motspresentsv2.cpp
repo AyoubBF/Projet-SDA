@@ -8,12 +8,13 @@
 using namespace std;
 
 void mots_apparentsv2(Listes& listes) {
+	initialiser(listes.tab_listes[listes.nb_listes]);
 	for (unsigned int i = 0; i < listes.nb_listes; i++) {
 		for (unsigned int j = i + 1; j < listes.nb_listes; j++) {
 			for (unsigned int k = 0; k < listes.tab_listes[i].nb_mots; k++) {
 				for (unsigned int m = 0; m < listes.tab_listes[j].nb_mots; m++) {
 					if (strcmp(listes.tab_listes[i].tab_mots[k], listes.tab_listes[j].tab_mots[m]) == 0) {
-						ecrire(listes.tab_listes[i], listes.tab_listes[j].tab_mots[m]);
+						ecrire(listes.tab_listes[listes.nb_listes], listes.tab_listes[j].tab_mots[m]);
 						break;
 					}
 				}
@@ -26,14 +27,15 @@ void exo5() {
 	Mot buffer;
 	strcpy(buffer, "NULL");
 	Listes listes;
+	Mot buffer2;
 	initialiser_listes(listes);
-	initialiser(listes.tab_listes[0]);
 	for (unsigned int k = 0; k < listes.nb_listes+1; k++) {
+		initialiser(listes.tab_listes[k]);
 		while (strcmp(buffer, "*") != 0) {
 			lire_listes(buffer, listes, k);
-			if (listes.tab_listes[listes.nb_listes].nb_mots == 0 && strcmp(buffer, "*") == 0) {
-				break;
-			}
+		}
+		if (listes.tab_listes[k].nb_mots == 0) {
+			break;
 		}
 		strcpy(buffer, "NULL");
 	}

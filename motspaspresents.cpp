@@ -9,7 +9,7 @@ using namespace std;
 
 void initialiser_listes(Listes& listes) {
 	listes.nb_listes = 0;
-	listes.capalistes = 5;
+	listes.capalistes = 2;
 	listes.PE_listes = 5;
 	Liste* newT = new Liste[listes.capalistes];
 	listes.tab_listes = newT;
@@ -23,29 +23,20 @@ void lire_listes(Mot& id, Listes& listes, unsigned int i) {
 		}
 	}
 	else {
+		listes.nb_listes++;
 		if (listes.nb_listes >= listes.capalistes)
 		{
 			Liste* listeMot = new Liste[listes.capalistes + 2];
 
-			for (unsigned int k = 0; k <= i; k++)
+			for (unsigned int j = 0; j < listes.nb_listes; j++)
 			{
-				initialiser(listeMot[i]);
+				listeMot[j] = listes.tab_listes[j];
 			}
-
-			if (listes.capalistes != 0) {
-				for (unsigned int j = 0; j < listes.nb_listes; j++)
-				{
-					listeMot[j] =listes.tab_listes[j];
-				}
-				delete[] listes.tab_listes;
-			}
-
+			delete[] listes.tab_listes;
 			listes.tab_listes = listeMot;
 			listes.capalistes = listes.capalistes +2;
 
 		}
-		listes.nb_listes++;
-		initialiser(listes.tab_listes[listes.nb_listes]);
 	}
 }
 
