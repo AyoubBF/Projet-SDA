@@ -27,7 +27,6 @@ void exo5() {
 	Mot buffer;
 	strcpy(buffer, "NULL");
 	Listes listes;
-	Mot buffer2;
 	initialiser_listes(listes);
 	for (unsigned int k = 0; k < listes.nb_listes+1; k++) {
 		initialiser(listes.tab_listes[k]);
