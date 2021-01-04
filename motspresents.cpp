@@ -8,6 +8,7 @@
 using namespace std;
 
 void mots_apparents(Listes& listes) {
+	initialiser(listes.tab_listes[listes.nb_listes]);
 	for (unsigned int i = 0; i < listes.tab_listes[1].nb_mots; i++) {
 		for (unsigned int j = 0; j < listes.tab_listes[0].nb_mots; j++) {
 			if (strcmp(listes.tab_listes[0].tab_mots[j], listes.tab_listes[1].tab_mots[i]) == 0) {
@@ -23,10 +24,8 @@ void exo4() {
 	strcpy(buffer, "NULL");
 	Listes listes;
 	initialiser_listes(listes);
-	for (unsigned int e = 0; e <= 2; e++) {
-		initialiser(listes.tab_listes[e]);
-	}
 	for (unsigned int k = 0; k < 2; k++) {
+		initialiser(listes.tab_listes[k]);
 		while (strcmp(buffer, "*") != 0) {
 			lire_listes(buffer, listes, k);
 		}
