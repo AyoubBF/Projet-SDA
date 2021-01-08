@@ -7,6 +7,29 @@
 
 using namespace std;
 
+void lire_listes2(Mot& id, Listes& listes, unsigned int i) {
+	cin >> id;
+	if (strcmp(id, "*") != 0) {
+		ecrire(listes.tab_listes[listes.nb_listes], id);
+	}
+	else {
+		listes.nb_listes++;
+		if (listes.nb_listes >= listes.capalistes)
+		{
+			Liste* listeMot = new Liste[listes.capalistes * 2];
+
+			for (unsigned int j = 0; j < listes.nb_listes; j++)
+			{
+				listeMot[j] = listes.tab_listes[j];
+			}
+			delete[] listes.tab_listes;
+			listes.tab_listes = listeMot;
+			listes.capalistes *= 2;
+
+		}
+	}
+}
+
 void mots_apparents(Listes& listes) {
 	initialiser(listes.tab_listes[listes.nb_listes]);
 	for (unsigned int i = 0; i < listes.tab_listes[1].nb_mots; i++) {
@@ -27,13 +50,11 @@ void exo4() {
 	for (unsigned int k = 0; k < 2; k++) {
 		initialiser(listes.tab_listes[k]);
 		while (strcmp(buffer, "*") != 0) {
-			lire_listes(buffer, listes, k);
+			lire_listes2(buffer, listes, k);
 		}
 		strcpy(buffer, "NULL");
 	}
-	for (unsigned int j = 0; j < listes.nb_listes; j++) {
-		tri_alphabetique(listes.tab_listes[j]);
-	}
+	tri_alphabetique(listes.tab_listes[1]);
 	mots_apparents(listes);
 	for (unsigned int z = 0; z < listes.tab_listes[2].nb_mots; z++) {
 		cout << listes.tab_listes[2].tab_mots[z] << endl;

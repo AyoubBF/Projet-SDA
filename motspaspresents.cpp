@@ -25,7 +25,7 @@ void lire_listes(Mot& id, Listes& listes, unsigned int i) {
 		listes.nb_listes++;
 		if (listes.nb_listes >= listes.capalistes)
 		{
-			Liste* listeMot = new Liste[listes.capalistes + 2];
+			Liste* listeMot = new Liste[listes.capalistes * 2];
 
 			for (unsigned int j = 0; j < listes.nb_listes; j++)
 			{
@@ -33,11 +33,12 @@ void lire_listes(Mot& id, Listes& listes, unsigned int i) {
 			}
 			delete[] listes.tab_listes;
 			listes.tab_listes = listeMot;
-			listes.capalistes = listes.capalistes +2;
+			listes.capalistes *= 2;
 
 		}
 	}
 }
+
 
 void mots_pas_apparents(Listes& listes) {
 	initialiser(listes.tab_listes[listes.nb_listes]);
@@ -67,7 +68,7 @@ void exo3() {
 		}
 		strcpy(buffer, "NULL");
 	}
-	for (unsigned int j = 0; j < listes.nb_listes; j++) {
+	for (unsigned int j = 1; j < listes.nb_listes; j++) {
 		tri_alphabetique(listes.tab_listes[j]);
 	}
 	mots_pas_apparents(listes);
