@@ -1,11 +1,6 @@
 #pragma warning (disable : 4996)
 #include <iostream>
-#include <string>
-#include "liste.h"
-#include "dynam.h"
 #include "grille.h"
-#include "lecture.h"
-#include "canonique.h"
 
 using namespace std;
 

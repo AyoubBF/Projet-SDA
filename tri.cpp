@@ -1,7 +1,6 @@
 #pragma warning (disable : 4996)
 #include <iostream>
 #include <string.h>
-#include "liste.h"
 #include "dynam.h"
 
 using namespace std;

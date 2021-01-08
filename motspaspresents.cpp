@@ -1,7 +1,6 @@
 #pragma warning (disable : 4996)
 #include <iostream>
 #include <string.h>
-#include "listes.h"
 #include "canonique.h"
 #include "dynam.h"
 

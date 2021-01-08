@@ -1,5 +1,9 @@
 #pragma once
 
+#include "dynam.h"
+#include "lecture.h"
+#include "canonique.h"
+
 /**
  * @brief structure de la grille composée de ses caractères et d'un booléen indiquant si la case a étté visité ou non
 */
